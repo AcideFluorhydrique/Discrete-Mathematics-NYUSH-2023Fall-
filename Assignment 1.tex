@@ -1,0 +1,510 @@
+\documentclass[11pt,twoside]{article}
+% \input{hwheader.tex}
+
+%\documentclass[11pt,twoside]{article}
+\usepackage[nonamelimits]{amsmath}
+\usepackage{amssymb, amsthm}
+
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headheight}{0.5 in}
+\setlength{\headsep}{0.5 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%%% SETS
+\newcommand\Z{\mbox{$\mathbb Z$}}
+\newcommand\N{\mbox{$\mathbb N$}}
+\newcommand\R{\mbox{$\mathbb R$}}
+\newcommand\F{\mbox{$\mathbb F$}}
+\def\B{\{0,1\}}
+\def\cond{\mid}
+
+%%% FUNCTIONS
+\providecommand\floor[1]{\lfloor#1\rfloor}
+\providecommand\ceil[1]{\lceil#1\rceil}
+\providecommand\blog[1]{\log_2\ceil{#1}}
+\providecommand\abs[1]{\lvert#1\rvert}
+\providecommand\bigabs[1]{\bigl\lvert#1\bigr\rvert}
+
+\def\co{{\rm co}}
+\def\avg{{\rm Avg}}
+\def\heur{{\rm Heur}}
+
+%%% THEOREM TYPE ENVIRONMENTS
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{exercise}{Exercise}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+%%% HEADINGS
+\newcommand{\homework}[1]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{page}{1}
+   \noindent
+   \classname \hfill \mbox{\updatedday} \\
+   \instname \hfill \mbox{\duedate}
+   \rule{6.5in}{0.5mm}
+   \vspace*{-0.1 in}
+}
+
+
+\newcommand{\problem}[1]{\section*{Problem #1}}
+
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+%%% DEFINITIONS
+\def\classname{CSCI-SHU 2314: Discrete Math}
+
+
+%%% INSTRUCTIONS
+\raggedbottom 
+
+
+\usepackage[pdftex]{graphicx}
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,arrows,automata}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\newcommand\includefa[1]{\begin{center}\includegraphics[scale=0.5]{#1}\end{center}}
+
+\def\updatedday{Posted: September 18, 2024}
+\def\duedate{Due: 11:30pm (Shanghai time), October 11, 2024}
+\newenvironment{solution}{{\par\noindent\it Solution.}}{}
+
+\def\instname{Homework 1}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\homework{1}
+
+This assignment has in total $105$ base points and $20$ bonus points, and the cap is $100$.
+%Typesetting your solution using \LaTeX\ (by simply editing this tex template) gains $5$ extra points.
+Bonus questions are indicated using the $\star$ mark.
+
+\textit{Please specify the following information before submission}:
+\begin{itemize}
+    \item Your Name: %  (put your name here)
+    \item Your NetID: % (put your NetID here)
+\end{itemize}
+
+
+\problem{1: Write logic formulas [$8+8$ pts]} 
+
+Write logic formulas according to the given truth tables.
+Any logical formula that coincides with the truth table is correct.
+Simplification is encouraged but not necessary.
+
+\begin{enumerate}
+\item
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & R & Result \\
+\hline
+T & T & T & F \\
+\hline
+T & T & F & F \\
+\hline
+T & F & T & F \\
+\hline
+T & F & F & F \\
+\hline
+F & T & T & T \\
+\hline
+F & T & F & F \\
+\hline
+F & F & T & F \\
+\hline
+F & F & F & T \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\item
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & R & Result  \\
+\hline
+T & T & T & F \\
+\hline
+T & T & F & T \\
+\hline
+T & F & T & F \\
+\hline
+T & F & F & F \\
+\hline
+F & T & T & F \\
+\hline
+F & T & F & T \\
+\hline
+F & F & T & F \\
+\hline
+F & F & F & F \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+\begin{solution}
+\textbf{Please write down your solution to Problem 1 here.}
+
+(a) $(\neg P \land Q \land R)\lor(\neg P \land \neg Q \land \neg R) $
+
+(b) $(P \land Q \land \neg R)\lor(\neg P \land Q \land \neg R) $
+ 
+\end{solution}
+
+\problem{2: Simplification of logic formulas [$7+8$ pts]}
+Simplifying the logic formulas below as much as you can.
+
+\begin{enumerate}
+\item $\neg (\neg P \lor Q) \land (P \lor \neg Q)$
+
+\item $\forall x (P(x) \rightarrow Q(x)) \land \neg \exists x (Q(x) \lor R(x)) $
+
+\end{enumerate}
+
+\begin{solution}
+\textbf{Please write down your solution to Problem 2 here.}
+
+\hspace*{\fill}
+
+(a) $\neg (\neg P \lor Q) \land (P \lor \neg Q)$  = $(P \land \neg Q) \land (P \lor \neg Q)$ = $((P \land \neg Q) \land P) \lor ((P \land \neg Q) \land \neg Q)$ = $(P \land \neg Q) \lor (P \land \neg Q) = P \land \neg Q $
+
+\hspace*{\fill}
+
+
+(b) $\forall x (\neg P(x) \lor Q(x)) \land  \forall x (\neg Q(x) \land \neg R(x)) $ = $ \forall x ((\neg P(x) \lor Q(x)) \land \neg Q(x) \land \neg R(x))$ = $ \forall x (\neg P(x) \land \neg Q(x) \land \neg R(x))$
+
+
+\end{solution}
+
+\problem{3: Arguments [$8+8+8$ pts]}
+\begin{enumerate}
+    \item Consider the following argument:
+    \begin{enumerate}
+        \item[1.] If I study, then I will pass the exam.
+        \item[2.] I pass the exam, then I will get a scholarship.
+        \item[3.] I did not get a scholarship.
+        \item[4.] Therefore, I did not study.
+    \end{enumerate}
+    Define statements $P = $ ``I study'', $Q = $ ``I pass the exam'', and $R = $ ``I get a scholarship''.
+    Translate the above (English) argument to an argument with logic formulas.
+    Then determine whether this argument is valid or not (explain why).
+
+
+    
+    \item Consider the following argument:
+    \begin{enumerate}
+        \item[1.] If today is the weekend, then I will go to the park.
+        \item[2.] If I go to the park, then I will bring lunch.
+        \item[3.] Today is not the weekend.
+        \item[4.] Therefore, I will not bring lunch.
+    \end{enumerate}
+    Define statements $P = $ ``today is the weekend'', $Q = $ ``I will go to the park'', and $R = $ ``I will bring lunch''.
+    Translate the above (English) argument to an argument with logic formulas.
+    Then determine whether this argument is valid or not (explain why).
+
+
+
+    
+    \item Consider the following argument:
+    \begin{enumerate}
+        \item[1.] All undergraduates study hard.
+        \item[2.] If someone studies hard, then they pass the exam.
+        \item[3.] There exists a student who did not pass the exam.
+        \item[4.] Therefore, there exists a student who was not a undergraduate.
+    \end{enumerate}
+    Define statements $P(x) = $ ``$x$ is a undergraduate'', $Q(x) = $ ``$x$ studies hard'', and $R(x) = $ ``$x$ passes the exam''.
+    Translate the above (English) argument to an argument with logic formulas.
+    Then determine whether this argument is valid or not (explain why).    
+\end{enumerate}
+
+\begin{solution}
+\textbf{Please write down your solution to Problem 3 here.}
+
+
+
+
+    \hspace*{\fill}
+
+    (a)
+    
+    1. $P\rightarrow Q$
+    
+    2. $Q\rightarrow R$
+
+    3. $\neg R$
+
+    4. $\neg P$
+
+
+
+    The statement is valid. Because by 1 and 2 we know $P\rightarrow R$
+and the contrapositive is $ \neg R\rightarrow \neg P$
+
+
+
+
+    \hspace*{\fill}
+
+    (b)
+    
+    1. $P\rightarrow Q$
+    
+    2. $Q\rightarrow R$
+
+    3. $\neg P$
+
+    4. $\neg R$
+
+
+
+    The statement is invalid. Because by 1 and 2 we know $P\rightarrow R$, which means $\neg P \lor R$
+
+    Now we only know $\neg P$, which has nothing to do with $R$.
+    
+
+    \hspace*{\fill}
+
+    
+    (c)
+
+    1. $\forall x (P(x)\rightarrow Q(x))$
+
+
+    2. $\forall x (Q(x)\rightarrow R(x))$
+
+    3. $\exists x (\neg R(x))$
+
+    4. $\exists x (\neg P(x))$
+
+
+    This statement is valid. Because by 1 and 2 we know $\forall x (P(x)\rightarrow R(x))$ and this contrapositive is $\exists x (\neg R(x)) \rightarrow \exists x (\neg P(x))$
+
+
+
+
+
+
+
+
+
+\end{solution}
+
+\problem{4: Translating mathematical statements [$7+8+10^\star$ pts]}
+Express the following statements in first-order logic.
+You can define your own predicates.
+However, when defining predicates and writing the final formula, you are only allowed to use arithmetic operators ($+,-,\times,/$), comparison operators ($<,>,\leq,\geq,=$), and logic operators/quantifiers.
+
+\begin{enumerate}
+    \item All prime numbers are greater than 1.
+    \item There exists a number whose square is equal to itself.
+    \item[(c$^\star$)] There exist infinitely many rational numbers $x$ satisfying that $P(x)$ is true. \\
+    (Here $P$ is some predicate defined on the domain of rational numbers.)
+\end{enumerate}
+
+\begin{solution}
+\textbf{Please write down your solution to Problem 4 here.}
+
+\hspace*{\fill}
+
+(a)
+
+def $P(x): x$ is a prime number
+
+A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
+
+Hence, $P(x)$ can be written as $(x \in {\mathbb{N}^*} \land \forall n (n \in {\mathbb{N}^*} \land n > 1 \land n < x)) \rightarrow \dfrac{x}{n} \notin {\mathbb{N}^*} $
+
+So this statement can be written as $\forall x ((x \in {\mathbb{N}^*} \land \forall n (n \in {\mathbb{N}^*} \land n > 1 \land n < x)) \rightarrow \dfrac{x}{n} \notin {\mathbb{N}^*})\rightarrow x>1) $
+
+
+
+
+\hspace*{\fill}
+
+(b)
+
+$ \exists x(x \in {\mathbb{R}} \land (x \times x = x)) $
+
+\hspace*{\fill}
+
+
+(c)
+
+$\forall x(x \in {\mathbb{Q}} \land \exists y(y \in {\mathbb{Q}}\land (x<y) \land P(y)))$
+
+
+
+
+
+\end{solution}
+
+\problem{5: Proof questions [$8+(8+10^*)+10+9$ pts]}
+
+
+\begin{enumerate}
+    \item Prove that $\sqrt{2} + \sqrt{3}$ is irrational.
+
+    \item The Fibonacci sequence $F_0,F_1,F_2,\dots$ is an infinite sequence of numbers defined as follows: $F_0 = 0$, $F_1 = 1$, $F_i = F_{i-1}+F_{i-2}$ for all $i \geq 2$.
+
+\begin{enumerate}
+    \item[(i)] Prove by induction that $F_{i-1} \leq F_i \leq 2 F_{i-1}$ for all $i \geq 2$.
+    \item[(ii$^\star$)] Based on the conclusion of (1), prove by induction that for all $x \in \mathbb{Z}^+$, there exist $n \in \mathbb{Z}^+$ and $n$ \textit{different} numbers $a_1,\dots,a_n \in \mathbb{Z}^+$ such that $x = F_{a_1}+ \cdots + F_{a_n}$.
+\end{enumerate}
+
+    \item Assume there is a party with \(n\) (\(n > 3\)) participants, numbered \(1, 2, \ldots, n\). Suppose each person has met \(a_1, a_2, \ldots, a_n\) people before the party, excluding themselves (assuming meeting is a bidirectional relationship, i.e., if \(a\) has met \(b\), then \(b\) has met \(a\)). Prove that there must exist \(1 \leq i < j \leq n\) such that \(a_i = a_j\).
+
+    \item Professor Fool introduces a way to apply induction on real numbers.
+    Suppose the goal is to prove that $P(x)$ is true for all non-negative \textit{real} numbers $x$.
+    Like the standard (strong) induction, Fool's induction works as follows.
+    \begin{itemize}
+        \item \textbf{Base case:} Prove $P(0)$.
+        \item \textbf{Induction step:} Prove for every $x \in \mathbb{R}^+$, if $P(y)$ for all $y \in [0,x)$, then $P(x)$.
+        \smallskip
+        \item \textbf{Conclusion:} $P(x)$ for all real number $x \geq 0$.
+    \end{itemize}
+    Give an example of the predicate $P$ for which Fool's induction fails, that is, you can do both the base case and the induction step for $P$, but the conclusion is wrong.
+    Justify your answer.
+\end{enumerate}
+
+\begin{solution}
+\textbf{Please write down your solution to Problem 5 here.}
+
+    \hspace*{\fill}
+
+    (a)
+    Proof by contradiction:
+    
+    Assume that $\sqrt{2} + \sqrt{3}$ is rational
+    
+    By the definition of rational numbers, $\sqrt{2} + \sqrt{3} = \dfrac{p}{q} \land p,q\in {\mathbb{N}^*} \land (p,q) = 1 $
+    
+
+    Therefore, $\sqrt{3} = \dfrac{p}{q} - \sqrt{2}$
+
+    $ 3 = \dfrac{p^2}{q^2} - 2\sqrt{2} \dfrac{p}{q} +2 $
+
+    $\sqrt{2} = \dfrac{(p^2-q^2)q}{2pq^2}$
+
+    As learnt in Xue's lecture, $\sqrt{2}$ is irrational,
+
+    While $\dfrac{(p^2-q^2)q}{2pq^2}$ is rational since $p$ and $q$ are both integers.
+
+    Contradiction! The assumption is false, which implies $\sqrt{2} + \sqrt{3}$ is irrational.
+
+    \hspace*{\fill}
+
+    (b) 
+    
+    (i)Proof by induction:
+
+    When $i = 2$, 
+    
+    $F_1 = 1$, $F_2 = 1$ , therefore $F_{i-1} \leq F_i \leq 2 F_{i-1}$ is true ······ (1)
+
+    Suppose when $i = k ( k \in {\mathbb{N}^*} \land k > 1)$ , $F_{i-1} \leq F_i \leq 2 F_{i-1}$ is true
+
+    which means $F_{k-1} \leq F_k \leq 2 F_{k-1}$ is true
+
+    For $i = k + 1$:
+
+    $F_{k+1} = F_{k-1}+F_{k} \leq F_k + F_k = 2F_k$
+
+    $F_{k+1} = F_k + F_{k-1} \geq F_k$
+
+    so $F_{k} \leq F_{k+1} \leq 2 F_{k}$ is also true  ······ (2)
+
+    By (1) and (2), we can conclude that $F_{i-1} \leq F_i \leq 2 F_{i-1}$ for $\forall i \geq 2$.
+
+    \hspace*{\fill}
+
+    (ii)Proof by induction:
+
+    When $x = 1$, $ 1 = F_1 $, hence the statement is true.
+
+    % Suppose for $ \forall i\in {\mathbb{N}^*} \land 0\leq i \leq k$
+
+    % there exist $n \in \mathbb{Z}^+$ and $n$ \textit{different} numbers $a_1,\dots,a_n \in \mathbb{Z}^+$ such that $x = F_{a_1}+ \cdots + F_{a_n}$.
+    
+    Assume that for some $x = k$, we can express $k = F_{a_1} + F_{a_2} + \cdots + F_{a_m}$
+
+    For $x = k + 1$, there are two cases:
+
+    Case 1: $k+1$ is a Fibonacci number
+
+    If $k + 1 = F_j$ for some \( j \), we can express $x = k + 1$ as $F_j$
+
+    Case 2: $k + 1$ is not a Fibonacci number
+
+    Let \( F_b \) be the largest Fibonacci number s.t. $F_b \leq k + 1$
+    
+    Def $r = (k + 1) - F_b$. By (i),  $0<r < F_b$
+
+    Since $r < k + 1$, $r = F_{a_1} + F_{a_2} +$ ··· $+ F_{a_m}$
+
+    Because \( F_b \) is the largest Fibonacci $\leq$  $k + 1$, all the Fibonacci numbers used in the sum for $r$ are smaller than \( F_b \), and thus distinct. Therefore, $k + 1 = F_b + F_{a_1} + F_{a_2} + \cdots + F_{a_m}$
+
+    Hence, when $x = k + 1$ , this statement is also true
+
+    QED
+
+    \hspace*{\fill}
+
+    (c)Proof by contradiction
+
+    Suppose the statement is false. So \(a_1, a_2, \ldots, a_n\) are all distinct.
+
+    In a party with $n$ participants, the number of people each person has met should be smaller or equal to $n-1$
+
+
+    Because \(a_1, a_2, \ldots, a_n\) are all distinct, they must be $0, 1, 2, \ldots, n-1$
+    
+    So there exists a participant who met $n-1$ people
+
+    If a participant has met all other $n-1$ participants, then every other participant must has met at least this one person
+    
+    Therefore, no other participant can met 0 people, because they have all met the participant who knows everyone
+
+    Here is the contradiction, so the assumption is false, which means there must exist \(1 \leq i < j \leq n\) such that \(a_i = a_j\).
+
+    QED
+
+
+    \hspace*{\fill}
+
+    (d)
+    $P(x)$: $ x < 3 $
+
+
+    $P(y)$ is true for $\forall y \in [0, 3)$, but $P(3)$ is false.
+
+
+\end{solution}
+
+\end{document}
