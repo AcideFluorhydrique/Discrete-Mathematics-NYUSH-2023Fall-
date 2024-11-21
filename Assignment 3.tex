@@ -1,0 +1,327 @@
+\documentclass[11pt,twoside]{article}
+% \input{hwheader.tex}
+
+%\documentclass[11pt,twoside]{article}
+\usepackage[nonamelimits]{amsmath}
+\usepackage{amssymb, amsthm}
+
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headheight}{0.5 in}
+\setlength{\headsep}{0.5 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%%% SETS
+\newcommand\Z{\mbox{$\mathbb Z$}}
+\newcommand\N{\mbox{$\mathbb N$}}
+\newcommand\R{\mbox{$\mathbb R$}}
+\newcommand\F{\mbox{$\mathbb F$}}
+\def\B{\{0,1\}}
+\def\cond{\mid}
+
+%%% FUNCTIONS
+\providecommand\floor[1]{\lfloor#1\rfloor}
+\providecommand\ceil[1]{\lceil#1\rceil}
+\providecommand\blog[1]{\log_2\ceil{#1}}
+\providecommand\abs[1]{\lvert#1\rvert}
+\providecommand\bigabs[1]{\bigl\lvert#1\bigr\rvert}
+
+\def\co{{\rm co}}
+\def\avg{{\rm Avg}}
+\def\heur{{\rm Heur}}
+
+%%% THEOREM TYPE ENVIRONMENTS
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{exercise}{Exercise}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+%%% HEADINGS
+\newcommand{\homework}[1]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{page}{1}
+   \noindent
+   \classname \hfill \mbox{\updatedday} \\
+   \instname \hfill \mbox{\duedate}
+   \rule{6.5in}{0.5mm}
+   \vspace*{-0.1 in}
+}
+
+
+\newcommand{\problem}[1]{\section*{Problem #1}}
+
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+%%% DEFINITIONS
+\def\classname{CSCI-SHU 2314: Discrete Math}
+
+
+%%% INSTRUCTIONS
+\raggedbottom 
+
+
+\usepackage[pdftex]{graphicx}
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,arrows,automata}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\newcommand\includefa[1]{\begin{center}\includegraphics[scale=0.5]{#1}\end{center}}
+
+\def\updatedday{Posted: November 6, 2024}
+\def\duedate{Due: 11:30pm (Shanghai time), November 25, 2024}
+\newenvironment{solution}{{\par\noindent\it Solution.}}{}
+
+\def\instname{Homework 3}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\homework{1}
+
+This assignment has in total $100$ base points and $20$ bonus points, and the cap is $100$.
+Bonus questions are indicated using the $\star$ mark.
+
+\textit{Please specify the following information before submission}:
+\begin{itemize}
+    \item Your Name: Geo Wang%  (put your name here)
+    \item Your NetID: yw7997% (put your NetID here)
+\end{itemize}
+
+
+%\problem{1: Number of components [20 pts]} 
+
+%Let $G=(V,E)$ be a connected graph with $2k$ vertices of odd degree.
+%Prove that $E(G)$ can be partitioned into $k$ paths (do not have repeated edges).
+
+\problem{1: Number of components [20 pts]} 
+
+Let $G$ be a connected graph in which the degree of every vertex is at most $4$.
+Now we remove $k$ vertices (and all edges incident to them) from $G$.
+Denote by $G'$ the resulting graph.
+Prove that $G'$ consists of at most $3k+1$ connected components.
+
+(\textbf{Hint:} Imagine that the $k$ vertices are removed from the graph one by one, and observe how much the number of connected components can increase after each vertex is removed.)
+
+\hspace*{\fill}
+
+When $k = 0$, 
+
+Originally the graph is connected, which means there is a path for any two vertices in the graph. The number of connected components is one
+
+Assume that the statement is true when we remove $k-1$ vertices, to wit, there are at most $3k-2$ connected components
+
+Considering a vertices $u$ in the graph:
+
+deg$(u) \leq 4$
+
+Therefore there are at most four edges with $u$, which implies there are at most four paths go through the vertice $u$
+
+If we remove $u$, we will also remove the four paths, which at most increase the number of connected components by deg$(u) - 1$
+
+So the maximum increase is 3
+
+Now the total number of connected components is at most $(3k-2)+3 = 3k+1$
+
+By induction, we can prove that $G'$ consists of at most $3k+1$ connected components.
+
+
+
+\problem{2: Three in a tree [20 pts]}
+%In a simple (without loops or multiple edges) planar graph, let \( m \) be the number of edges, \( n \) be the number of vertices, and \( d \) be the number of faces. Prove that: \( m \leq 3n - 6 \) and \( d \leq 2n - 4 \).
+
+Let $T = (V,E)$ be a tree.
+For two vertices $u,v \in V$, we denote by $P_{u,v} \subseteq V$ the set of vertices on the (unique) simple path between $u$ and $v$ in $T$.
+Prove that for any three vertices $u,v,w \in V$, we have $|P_{u,v} \cap P_{v,w} \cap P_{u,w}| = 1$.
+
+
+\hspace*{\fill}
+
+By the definition of tree, the graph $T$ is connected thus for any three vertices $u,v,w \in V$, these three paths $P_{u,v}, P_{v,w}$ and $ P_{u,w}$ must intersect at least at one vertex because $T$ is connected.
+
+Assume $|P_{u,v} \cap P_{v,w} \cap P_{u,w}| =2$, which means there are two intersect vertices of $P_{u,v}, P_{v,w}$ and $ P_{u,w}$
+
+Let's call them $a_1, a_2$
+
+
+
+WLOG: $P_{u,v} = u......a_1...a_2......v$ 
+and $P_{u,w} = u......a_1...a_2......w$
+
+if $P_{v,w} = v......a_1...a_2......w$
+
+then there is a circle $v......a_1...a_2......v$
+
+elif $P_{v,w} = v......a_2...a_1......w$
+
+then there is a circle $w......a_1...a_2......w$
+
+Contradiction with the definition of tree! Therefore we prove the uniqueness of the Common Vertex
+
+Hence, for any three vertices $u,v,w \in V$, we have $|P_{u,v} \cap P_{v,w} \cap P_{u,w}| = 1$.
+
+
+
+\problem{3: Maximum matching [20 pts]}
+Let $G = (X,Y,E)$ be a bipartite graph, and $M \subseteq E$ be a matching in $G$.
+We say $M \subseteq E$ is \textit{maximum} if for any matching $M' \subseteq E$ in $G$, we have $|M| \geq |M'|$.
+Now define a directed graph $G_M$ as follows.
+The vertices and edges of $G_M$ are exactly the same as those of $G$.
+For an edge $e$ of $G_M$ between two vertices $x \in X$ and $y \in Y$, its direction is from $x$ to $y$ if $e \notin M$ and is from $y$ to $x$ if $e \in M$.
+Let $X' \subseteq X$ and $Y' \subseteq Y$ consist of the vertices in $X$ and $Y$ not incident to any edge in $M$ (i.e., unmatched vertices), respectively.
+Prove that if $M$ is maximum, then there does not exist a path in $G_M$ from a vertex in $X'$ to a vertex in $Y'$.
+
+(\textbf{Hint:} If there exists a path in $G_M$ from a vertex in $X'$ to a vertex in $Y'$, can you construct a matching that is even larger than $M$?)
+
+\hspace*{\fill}
+
+Assume there exists a path $P$ in $G_M$ from a vertex $x_0$ in $X'$ to a vertex $y_k$ in $Y'$:
+
+Then the path must be $x_0 \rightarrow y_1 \rightarrow x_1 \rightarrow y_2 \rightarrow x_2 ...... \rightarrow x_{k-1} \rightarrow y_k$
+
+Where for $0 \leq i < k$,  $(x_i, y_{i+1}) \notin M$, whose direction is $x_i$ to $y_{i+1}$
+
+
+And for $1 \leq i < k$,  $(y_i, x_i) \notin M$, whose direction is $y_i$ to $x_{i}$
+
+Take a look at the edges in the path, we can found that the number of $x \rightarrow y$ is one greater than the number of $y \rightarrow x$
+
+Therefore we can construct a matching $M_1$ in this way:
+
+1) For the edges in $M$, delete those who is in the path $P$,
+
+2) For the edges in $P$, add them into the matching if they are not in $M$
+
+The match $M_1$ also satisfy the condition
+
+Now $|M_1| = |M| - (k-1) +k = |M| + 1$, contradict with the fact the $M$ is maximum
+
+Hence, if $M$ is maximum, then there does not exist a path in $G_M$ from a vertex in $X'$ to a vertex in $Y'$.
+
+
+
+%For each vertex \( x_i \in X \), we have \( d(x_i) \geq k \), and for each vertex \( y_i \in Y \), \( d(y_i) \leq k \). Prove that there exists a perfect matching from \( X \) to \( Y \) (there exists a matching \( M \) such that \( |M| = |X| \)).
+
+\problem{4: Unique coloring [20 pts]} 
+
+Let $G = (V,E)$ be a graph and $v \in V$ be a vertex of $G$.
+We want to color the vertices of $G$ using two colors, red and blue.
+We say a red/blue coloring of $G$ is \textit{good} if it satisfies the following two conditions: (i) any two neighboring vertices have different colors and (ii) the color of $v$ is red.
+Prove that $G$ admits a unique good red/blue coloring if and only if $G$ is bipartite and connected.
+
+\hspace*{\fill}
+
+The definition of bipartite graph: vertex set can be partitioned into two subsets $A$ and $B$ such that each edge has one endpoint in $A$ and the other endpoint in $B$.
+
+Pf:
+
+\hspace*{\fill}
+
+1) 
+$G$ admits a unique \textit{good} red/blue colouring $\rightarrow$ $G$ is bipartite and connected
+
+Assume $G$ admits a unique \textit{good} red/blue colouring, which means 
+
+    \qquad(i) any two neighboring vertices have different colours
+
+    \qquad(ii) the colour of $v$ is red
+
+We need to show that $G$ is bipartite and connected.
+
+\hspace*{\fill}
+
+Since $G$ can be coloured s.t. adjacent vertices have different colours, $G$ is properly 2-colourable(be partitioned into two subsets), which is equivalent to being bipartite by the definition
+Therefore, $G$ is bipartite
+
+Assume that $G$ is not connected
+
+Then $G$ has at least two connected components
+
+The component containing $v$ can be uniquely coloured starting with $v$ as red.
+
+However, in any other connected component, if there is a way of colouring, we can reverse the colour, which means we turn red to blue and blue to red.
+
+
+This means there are multiple good colourings, contradicts to the uniqueness.
+
+Therefore, $G$ must be connected.
+
+\hspace*{\fill}
+
+
+
+2)
+$G$ is bipartite and connected $\rightarrow$ $G$ admits a unique \textit{good} red/blue colouring
+
+Since $G$ is bipartite, it can be coloured using red and blue s.t. adjacent vertices have different colours
+
+So obviously there exists \textit{good} coloring
+
+Now, I'll show the uniqueness:
+
+Starting from $v$, as requirement, we coloured $v$ red
+
+Since $G$ is connected, every vertex can be reached from $v$ through a path
+
+For each edge $(u,w)$ in $G$:
+
+\qquad If $u$ is colored, assign $w$ to the colour opposite to $u$
+
+At each step, the colour of a vertex is uniquely determined by the colours assigned to previously visited vertices
+
+Therefore, there is only one way to extend the colouring from $v$ to the rest
+
+\hspace*{\fill}
+
+By (1)(2), we can conclude that $G$ admits a unique good red/blue colouring if and only if $G$ is bipartite and connected
+
+
+
+%Prove the following statements are equivalent for a graph \( G \):
+%\begin{enumerate}
+    %\item \( G \) is 2-colorable.
+    %\item \( G \) is a bipartite graph.
+    %\item Every cycle in \( G \) has an even number of edges.
+%\end{enumerate}
+
+\problem{5: Nice ordering [10+10 pts]}
+Let $G = (V,E)$ be a directed graph, where $|V| = n$.
+\begin{enumerate}
+    \item Prove that if the in-degree of every vertex is at least $1$, then $G$ has a (directed) cycle.
+    \item A \textit{nice ordering} of $G$ is an ordering $(v_1,\dots,v_n)$ of the $n$ vertices of $G$ such that every edge of $G$ is directed from some $v_i$ to some $v_j$ satisfying $j>i$.
+    Based on the result of (a), prove that $G$ admits a nice ordering if and only if $G$ does not have a (directed) cycle.
+\end{enumerate}
+
+%A directed complete graph is defined as a graph obtained by arbitrarily assigning a direction to each edge of an undirected complete graph. Prove that the sum of the squares of the out-degrees of all vertices equals the sum of the squares of the in-degrees of all vertices.
+
+
+\problem{6$^\star$: Baby 4-coloring theorem [20$^\star$ pts]}
+
+
+%In a map (a planar graph without intersecting edges), if there exists a Hamiltonian circuit (a cycle in an undirected graph that visits all vertices without repeating edges or vertices), then prove that we can color the faces of the map with four different colors such that adjacent faces are colored differently.
+
+Let $G$ be a planar graph in which the degree of every vertex is at most $4$.
+Prove that $\chi(G) \leq 4$.
+
+\end{document}
+
