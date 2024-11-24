@@ -312,6 +312,74 @@ Let $G = (V,E)$ be a directed graph, where $|V| = n$.
     Based on the result of (a), prove that $G$ admits a nice ordering if and only if $G$ does not have a (directed) cycle.
 \end{enumerate}
 
+
+\hspace*{\fill}
+
+(a)
+
+Choose any vertex $v_1 \in V$
+
+Since $v_1$ has an in-degree of at least 1, there must exists at least one vertex $v_2$ such that there is an edge $v_2 \rightarrow v_1$
+
+$v_2$ must have an in-degree of at least 1, so there exists a vertex $v_3$ with an edge $v_3 \rightarrow v_2$
+
+And similarly ......
+
+Since there are only $n$ vertices, which is finite
+
+Repeating this process after at most $n$ steps, it will eventually lead to visiting a vertex that has already been visited, which forms a cycle
+
+\hspace*{\fill}
+
+(b)
+
+$G$ admits a nice ordering $\Rightarrow$ $G$ does not have a (directed) cycle:
+
+Pf by contraditction:
+
+Suppose $G$ admits a nice ordering, and it contains a directed cycle
+
+i.e $v_i\rightarrow v_{i+1} \rightarrow ...... v_j \rightarrow v_i$ ($1\leq i< j\leq n$)
+
+Since $G$ is \textit{nice ordering}, from the cycle we have $i>j>j-1>......>i+1>i$
+
+This ridiculous that $i>i$, contradiction!
+
+Hence, $G$ does not have a (directed) cycle if $G$ admits a nice ordering 
+
+\hspace*{\fill}
+
+$G$ does not have a (directed) cycle $\Rightarrow$ $G$ admits a nice ordering:
+
+% By (a): the in-degree of every vertex is at least $1$ $\Rightarrow$ $G$ has a (directed) cycle
+
+% Therefore: $G$ doesn't have a (directed) cycle $\Rightarrow$ $\exists v$ s.t. the in-degree of $v$ is $0$ 
+
+Pf by induction:
+
+1) If $n =1 $, one vertex trivially has a nice ordering
+
+2) Assume that for $\forall k \in Z, k \in [1,n]$, the graph $G$ admits \textit{nice ordering}
+
+By (a): the in-degree of every vertex is at least $1$ $\Rightarrow$ $G$ has a (directed) cycle
+
+Therefore: $G$ doesn't have a (directed) cycle $\Rightarrow$ $\exists v$ s.t. the in-degree of $v$ is $0$ (i.e $v$)
+
+Consider the case when $n = k + 1$:
+
+Suppose the well ordering when $n = k$ is $(v_1, v_2, ......, v_k)$
+
+Construct $(v,v_1, v_2, ......, v_k)$, since the in-degree of $v$ is zero, there are no edges directed into $v$
+
+All edges in $G$ that involve $v$ are directed out of $v$, pointing to vertices $v_1, v_2, ......, v_k$in the ordering, satisfying the condition
+
+By (1)(2), $G$ does not have a (directed) cycle only if $G$ admits a nice ordering 
+
+\hspace*{\fill}
+
+QED
+
+
 %A directed complete graph is defined as a graph obtained by arbitrarily assigning a direction to each edge of an undirected complete graph. Prove that the sum of the squares of the out-degrees of all vertices equals the sum of the squares of the in-degrees of all vertices.
 
 
@@ -322,6 +390,17 @@ Let $G = (V,E)$ be a directed graph, where $|V| = n$.
 
 Let $G$ be a planar graph in which the degree of every vertex is at most $4$.
 Prove that $\chi(G) \leq 4$.
+
+\hspace*{\fill}
+
+Pf by induction:
+
+(1) When $n = 1$, trivially true.
+
+(2) Assume that any planar graph with $k$ vertices $(k<n)$ and maximum degree at most 4 is 4-colourable
+
+%氧化钙我不会做
+
 
 \end{document}
 
