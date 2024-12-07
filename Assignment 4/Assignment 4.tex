@@ -121,6 +121,27 @@ Give combinatorial proofs for the following equalities.
     
 \end{enumerate}
 
+\hspace*{\fill}
+
+Pf:
+
+(a)
+
+LHS $=\binom{n}{1}-2\binom{n}{2}+3\binom{n}{3}+\cdots+(-1)^{n-1}\cdot n \binom{n}{n} = \sum ^n_ {i=1} (-1)^{i-1}i C^i_n$
+
+Note that: $iC^i_n = i\cfrac{n!}{i!(n-i)!} = \cfrac{n(n-1)!}{(i-1)!(n-i)!} = nC^{i-1}_{n-1}$
+
+Therefore, LHS $= \sum ^n_ {i=1} (-1)^{i-1}nC^{i-1}_{n-1} = n\sum ^n_ {i=1} (-1)^{i-1}C^{i-1}_{n-1}$
+
+As already learnt in Xue's lecture 18: $\sum ^n_ {k=0} (-1)^{k}C^{k}_{n} = 0$
+
+Hence, LHS $=0\cdot n=0=$ RHS
+
+QED
+
+
+
+
 \problem{2: Number of intersection points [20 pts]}
 Consider a disk $D$ in the plane.
 Let $S$ be a set of $n$ (different) points on the boundary of $D$.
