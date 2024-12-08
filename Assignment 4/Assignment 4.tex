@@ -162,6 +162,31 @@ Consider the equation $x_1+x_2+\cdots+x_n = s$, where $x_1,\dots,x_n$ are variab
 We want to count the solutions to this equation satisfying that $x_i \in \{0,1,\dots,k\}$ for all $i$.
 Prove that the number of such solutions is equal to $\binom{s+n-1}{n-1} - \sum_{i=1}^n (-1)^{i-1} \binom{n}{i} \binom{s-ik+n-1}{n-1}$.
 
+\hspace*{\fill}
+
+Pf:
+
+As learnt in the Xie's recitation: the number of solutions of the equation $x_1+x_2+\cdots+x_n = s$, where $x_1,\dots,x_n$ are non-negative integers is $C^{n-1}_{s+n-1}$
+
+Now suppose the number of $x_i$ s.t. $x_i > k $ is $m$
+
+If we replace $y_i = x_i - k$, the equation becomes $y_1+y_2+\cdots+y_n = s-m(k+1)$, we can still use this formula
+
+Therefore, the number of the solution satisfying $x_i \leq k$ is $C^{n-1}_{s-m(k+1)+n-1}$
+
+And we also need to choose those $xi$ that greater than k, whose number is $C^m_n$
+
+Hence, the total numbers of ways of solution in this situation is $C^m_nC^{n-1}_{s-m(k+1)+n-1}$
+
+Note that the number of solutions to this equation satisfying that $0\leq x_i \leq k$ for all $i$ is those satisfying $0\leq x_i$ for all $i$ exclude those $\exists x_i > k$ for some $i$
+
+By using the property of inclusion-exclusion, the number of solutions of the equation $x_1+x_2+\cdots+x_n = s$, where $x_1,\dots,x_n$ are non-negative integers and smaller than $k+1$ is exactly
+
+$C^{n-1}_{s+n-1}-\sum ^n_{i=1} (-1)^{i-1 } C^i_nC^{n-1}_{s-i(k+1)+n-1}$
+
+QED
+
+
 \problem{4: Doubling sequences [20 pts]} 
 We say a sequence $(a_1,\dots,a_k)$ of positive integers is a \textit{doubling sequence} if $a_i \geq 2a_{i-1}$ for all $i \in \{2,3,\dots,k\}$.
 We want to count the doubling sequences whose last element is equal to a given number.
