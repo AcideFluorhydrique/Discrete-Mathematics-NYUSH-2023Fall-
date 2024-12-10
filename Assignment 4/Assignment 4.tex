@@ -156,6 +156,46 @@ The figure below shows that $f(5) = 5$.
     \includegraphics[height=5cm]{hw-fig-intersection.pdf}
 \end{center}
 
+
+\hspace*{\fill}
+
+Note that the sentence "For any different points $a,a',b,b',c,c' \in S$, the three segments $\mathsf{seg}(a,a')$, $\mathsf{seg}(b,b')$, and $\mathsf{seg}(c,c')$ do \textit{not} intersect at a common point" means that two different segment will form an unique intersection point(doesn't on the disk)
+
+Two different segments is equivalent to four different points
+
+Therefore, it's easy to guess that $f(n) = C^4_n$ for $n\geq 4$ and obviously $f(1) =f(2) =f(3) =0$
+
+(If we extend the definition of combinatorial number analytically, then the formula $f(n) = C^4_n$ still holds for the case $n=1,2,3$)
+
+\hspace*{\fill}
+
+Pf by induction:
+
+Trivially, $f(4) = 1$
+
+By the image shown about:$f(5)=5$......(1)
+
+Assume that for $n = k$(where $k \in \mathbb{N^*} $ and $k>4$), the statement $f(n) = C^4_n$ is true
+
+Which implies $f(k) = C^4_k$
+
+Consider $f(k+1)$
+
+Note that the difference between this case is that we add another point in the disk, i.e. $p$
+
+Now connect $p$ to all existing points
+
+If we wanna use lines containing $p$ to generate new intersections,
+
+We need to find 3 other points on the disk
+
+Which means adding $p$ would creat $C^3_k $ new intersections
+
+Hence $f(k+1) = f(k) + C^3_k = C^4_k+C^3_k = C^4_{k+1}$......(2)
+
+By (1)(2), we can conclude that $f(n) = C^4_n$ for $n\geq 4$ and $f(1) =f(2) =f(3) =0$
+
+
 \problem{3: Counting solutions [20 pts]}
 Let $n,s,k \in \mathbb{N}$.
 Consider the equation $x_1+x_2+\cdots+x_n = s$, where $x_1,\dots,x_n$ are variables.
